@@ -438,97 +438,9 @@ filterTags.forEach(tag => {
 });
 
 // Contact form handling with form validation
-if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        // Get form fields
-        const nameField = document.getElementById('name');
-        const emailField = document.getElementById('email');
-        const subjectField = document.getElementById('subject');
-        const messageField = document.getElementById('message');
-        
-        // Basic validation
-        let isValid = true;
-        const fields = [nameField, emailField, subjectField, messageField];
-        
-        fields.forEach(field => {
-            if (!field.value.trim()) {
-                field.classList.add('error');
-                isValid = false;
-            } else {
-                field.classList.remove('error');
-            }
-        });
-        
-        // Email validation
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(emailField.value.trim())) {
-            emailField.classList.add('error');
-            isValid = false;
-        }
-        
-        if (!isValid) {
-            return;
-        }
-        
-        // Show loading state
-        const submitBtn = contactForm.querySelector('.submit-btn');
-        const originalBtnText = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
-        
-        // You can add form submission logic here
-        // For example, using Formspree:
-        // const formData = new FormData(contactForm);
-        // await fetch('https://formspree.io/f/your-form-id', {
-        //     method: 'POST',
-        //     body: formData,
-        //     headers: { 'Accept': 'application/json' }
-        // });
-        
-        // Simulate sending (remove this in production)
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // Show success message
-        submitBtn.textContent = 'Message Sent!';
-        submitBtn.classList.add('success');
-        
-        // Reset the form after delay
-        setTimeout(() => {
-            contactForm.reset();
-            submitBtn.textContent = originalBtnText;
-            submitBtn.disabled = false;
-            submitBtn.classList.remove('success');
-        }, 3000);
-    });
-    
-    // Add field validation on blur
-    const fields = contactForm.querySelectorAll('.form-control');
-    fields.forEach(field => {
-        field.addEventListener('blur', () => {
-            if (!field.value.trim()) {
-                field.classList.add('error');
-            } else {
-                field.classList.remove('error');
-                
-                // Email specific validation
-                if (field.type === 'email') {
-                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailPattern.test(field.value.trim())) {
-                        field.classList.add('error');
-                    }
-                }
-            }
-        });
-        
-        // Remove error class when typing
-        field.addEventListener('input', () => {
-            field.classList.remove('error');
-        });
-    });
-}
 
+
+// Initialize everything when the DOM is fully loaded
 // Initialize everything when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Update your name in the hero section
@@ -543,4 +455,83 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Fetch repositories
     fetchRepositories();
+    
+    // Handle contact form
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        console.log('Contact form found');
+        
+        // Add the form submit handler
+        contactForm.addEventListener('submit', function(e) {
+            console.log('Form is being submitted');
+            
+            // Optional validation
+            const nameField = document.getElementById('name');
+            const emailField = document.getElementById('email');
+            const subjectField = document.getElementById('subject');
+            const messageField = document.getElementById('message');
+            
+            // Basic validation
+            let isValid = true;
+            const fields = [nameField, emailField, subjectField, messageField];
+            
+            fields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    isValid = false;
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+            
+            // Email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailField && !emailPattern.test(emailField.value.trim())) {
+                emailField.classList.add('error');
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                e.preventDefault(); // Only prevent submission if invalid
+                return;
+            }
+            
+            // If valid, show sending state but allow the form to submit
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Let the form submit normally to Formspree
+            // Don't call e.preventDefault() here!
+            
+            console.log('Form passed validation, submitting to Formspree...');
+        });
+        
+        // Add field validation on blur
+        const fields = contactForm.querySelectorAll('.form-control');
+        fields.forEach(field => {
+            field.addEventListener('blur', () => {
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                } else {
+                    field.classList.remove('error');
+                    
+                    // Email specific validation
+                    if (field.type === 'email') {
+                        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailPattern.test(field.value.trim())) {
+                            field.classList.add('error');
+                        }
+                    }
+                }
+            });
+            
+            // Remove error class when typing
+            field.addEventListener('input', () => {
+                field.classList.remove('error');
+            });
+        });
+    } else {
+        console.log('Contact form not found');
+    }
 });
