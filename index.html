@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-content">
+            <div class="logo">PORTFOLIO</div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="nav-links" id="navLinks">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#tools" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container hero-content">
+            <h1>Hello, I'm <span id="yourName">Joao Paulo</span></h1>
+            <p class="hero-subtitle">Software Developer & Problem Solver</p>
+            <a href="#projects" class="btn">View My Work</a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Projects</h2>
+            
+            <!-- Filtering Controls -->
+            <div class="project-filters fade-in">
+                <div class="filter-label">Filter by:</div>
+                <div class="filter-tags">
+                    <button class="filter-tag active" data-tag="all">All</button>
+                    <button class="filter-tag" data-tag="featured">Featured</button>
+                    <button class="filter-tag" data-tag="frontend">Frontend</button>
+                    <button class="filter-tag" data-tag="backend">Backend</button>
+                </div>
+            </div>
+            
+            <!-- Loading indicator -->
+            <div id="projects-loading">
+                <div class="loading-spinner"></div>
+            </div>
+            
+            <!-- Error message -->
+            <div id="projects-error">
+                <p>Could not load projects. Please check your GitHub username or try again later.</p>
+            </div>
+            
+            <!-- Projects grid will be populated via JavaScript -->
+            <div class="projects-grid" id="projects-grid">
+                <!-- Projects will be dynamically inserted here -->
+            </div>
+            
+            <!-- Empty state -->
+            <div id="projects-empty">
+                <p>No projects match the current filter. Try another filter.</p>
+            </div>
+
+            <!-- Warning Bar -->
+            <div class="elegant-warning fade-in">
+                <div class="warning-content">
+                    <div class="warning-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    </div>
+                    <p class="warning-text">Some projects may appear limited, outdated or require access due to code proprietary rights or security considerations.</p>
+                </div>
+            </div>
+            
+            <!-- CTA para criar novo projeto -->
+            <div class="create-project-cta fade-in">
+                <div class="cta-content">
+                    <div class="plus-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3>Didn't find a project that fits your needs?</h3>
+                    <p>Let's create something new together and add it to this list.</p>
+                    <a href="#contact" class="cta-button">Let's talk</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section with Enhanced Tooltips -->
+<section id="tools" class="tools">
+    <div class="container">
+        <h2 class="section-title fade-in">Skills & Tools</h2>
+        <div class="tools-grid">
+            <!-- Python -->
+            <div class="tool-item fade-in">
+                <div class="tool-tooltip">Scripting and automation in general</div>
+                <div class="tool-icon white-bg">
+                    <img src="./images/python.png" alt="Python" class="tool-image">
+                </div>
+                <div class="tool-name">Python</div>
+            </div>
+            
+            <!-- Oracle -->
+            <div class="tool-item fade-in">
+                <div class="tool-tooltip">I'm Oracle Database Administrator</div>
+                <div class="tool-icon white-bg">
+                    <img src="./images/oracle.jpg" alt="Oracle" class="tool-image">
+                </div>
+                <div class="tool-name">Oracle</div>
+            </div>
+            
+            <!-- MongoDB -->
+            <div class="tool-item fade-in">
+                <div class="tool-tooltip">No relational databases? No problem!</div>
+                <div class="tool-icon white-bg">
+                    <img src="./images/mongo.png" alt="MongoDB" class="tool-image">
+                </div>
+                <div class="tool-name">MongoDB</div>
+            </div>
+            
+            <!-- Django -->
+            <div class="tool-item fade-in">
+                <div class="tool-tooltip">My favorite python rest framework</div>
+                <div class="tool-icon white-bg">
+                    <img src="./images/django.png" alt="Django" class="tool-image">
+                </div>
+                <div class="tool-name">Django</div>
+            </div>
+            
+            <!-- Airflow -->
+            <div class="tool-item fade-in">
+                <div class="tool-tooltip">Orchestrating complex data pipelines with ease</div>
+                <div class="tool-icon white-bg">
+                    <img src="./images/airflow.webp" alt="Airflow" class="tool-image">
+                </div>
+                <div class="tool-name">Airflow</div>
+            </div>
+            
+            <!-- Spark -->
+            <div class="tool-item fade-in">
+                <div class="tool-tooltip">Processing big data at lightning speed</div>
+                <div class="tool-icon white-bg">
+                    <img src="./images/spark.webp" alt="Spark" class="tool-image">
+                </div>
+                <div class="tool-name">Spark</div>
+            </div>
+            
+            <!-- Flask -->
+            <div class="tool-item fade-in">
+                <div class="tool-tooltip">For short problems and quick API solutions</div>
+                <div class="tool-icon white-bg">
+                    <img src="./images/flask.png" alt="Flask" class="tool-image">
+                </div>
+                <div class="tool-name">Flask</div>
+            </div>
+            
+            <!-- Zabbix -->
+            <div class="tool-item fade-in">
+                <div class="tool-tooltip">Do you monitor your environment?</div>
+                <div class="tool-icon white-bg">
+                    <img src="./images/zabbix.png" alt="Zabbix" class="tool-image">
+                </div>
+                <div class="tool-name">Zabbix</div>
+            </div>
+
+            <!-- Next.js -->
+            <div class="tool-item fade-in">
+                <div class="tool-tooltip">Building modern, fast web applications</div>
+                <div class="tool-icon white-bg">
+                    <img src="./images/nextjs.png" alt="Next.js" class="tool-image">
+                </div>
+                <div class="tool-name">Next.js</div>
+            </div>
+
+            <!-- Oracle Apex  -->
+            <div class="tool-item fade-in">
+                <div class="tool-tooltip">Rapid application development on Oracle</div>
+                <div class="tool-icon white-bg">
+                    <img src="./images/oracle_apex.jpg" alt="Oracle Apex" class="tool-image">
+                </div>
+                <div class="tool-name">Oracle Apex</div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About Me Section -->
+<section id="about" class="about">
+    <div class="container">
+        <h2 class="section-title fade-in">About Me</h2>
+        
+        <div class="about-content fade-in">
+            <div class="about-image">
+                <div class="profile-image">
+                    <!-- Replace with your actual image path -->
+                    <img src="./images/jp-photo.jpeg" alt="João Paulo Blume" 
+                         onerror="this.onerror=null; this.src='/api/placeholder/400/400'; this.alt='João Paulo Blume';">
+                </div>
+                <div class="experience-badge">5+ Years Experience</div>
+            </div>
+            
+            <div class="about-text">
+                <h3>Hey there, I'm <span class="highlight">João Paulo Blume</span></h3>
+                
+                <p>I'm currently working as an <strong>Oracle Database Administrator</strong>, but in practice, I've been a <strong>Backend Developer</strong> for over 5 years, specializing in database integrations and APIs.</p>
+                
+                <p>My background as a DBA has been invaluable, teaching me the lowest levels of software: operating systems, hardware resources, virtualization, and more. This foundation gives me a unique perspective when developing solutions.</p>
+                
+                <p>I also work as a <strong>Software Developer</strong> and <strong>Data Engineer</strong>, planning, deploying, and developing integration solutions between various systems and data sources.</p>
+                
+                <p>I'm passionate about technology, and each challenge inspires me to learn new skills. I'd love to share my journey through this portfolio and perhaps find partners to collaborate on new ideas.</p>
+                
+                <div class="about-cta">
+                    <a href="#contact" class="btn about-btn">Let's Talk</a>
+                    <a href="#projects" class="btn about-btn-outline">View My Work</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="key-skills fade-in">
+            <div class="key-skill">
+                <div class="skill-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 10h-4V4h-4v6H6l6 6 6-6z"></path>
+                        <path d="M6 20h12"></path>
+                    </svg>
+                </div>
+                <h4>Backend Development</h4>
+                <p>Building robust APIs and server-side applications</p>
+            </div>
+            
+            <div class="key-skill">
+                <div class="skill-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                    </svg>
+                </div>
+                <h4>Database Administration</h4>
+                <p>Expert in Oracle and NoSQL database solutions</p>
+            </div>
+            
+            <div class="key-skill">
+                <div class="skill-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                </div>
+                <h4>Data Engineering</h4>
+                <p>Creating pipelines and integration solutions</p>
+            </div>
+            
+            <div class="key-skill">
+                <div class="skill-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                        <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                        <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                    </svg>
+                </div>
+                <h4>System Architecture</h4>
+                <p>Designing infrastructures from OS to application</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <form class="contact-form fade-in" id="contactForm">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" id="message" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" class="social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+                <a href="#" class="social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="#" class="social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+            </div>
+            <p>&copy; <span id="currentYear">2025</span> Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
